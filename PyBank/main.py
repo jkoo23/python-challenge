@@ -41,23 +41,19 @@ with open(budget_data_csv, 'r') as csvfile:
 
 avg_pnl = round(sum_pnl_change/(month_counter-1),2)
 
-print('Financial Analysis')
-print('-----------------------')
-print(f'Total Months: {month_counter}')
-print(f'Total: ${total_pnl}')
-print(f'Average Change: ${avg_pnl}')
-print(f'Greatest Increase in Profits: {greatest_pnl_date} (${greatest_pnl_amount})')
-print(f'Greatest Decrease in Profits: {lowest_pnl_date} (${lowest_pnl_amount})')
-
+output = (
+f'Financial Analysis\n'
+f'-----------------------\n'
+f'Total Months: {month_counter}\n'
+f'Total: ${total_pnl}\n'
+f'Average Change: ${avg_pnl}\n'
+f'Greatest Increase in Profits: {greatest_pnl_date} (${greatest_pnl_amount})\n'
+f'Greatest Decrease in Profits: {lowest_pnl_date} (${lowest_pnl_amount})\n'
+)
+print(output)
 # save the output file path
 output_file = os.path.join("analysis","analysis.txt")
 
 # open the output file, create a header row, and then write the zipped object to the csv
 with open(output_file, "w") as datafile:
-    datafile.write('Financial Analysis\n')
-    datafile.write('-----------------------\n')
-    datafile.write(f'Total Months: {month_counter}\n')
-    datafile.write(f'Total: ${total_pnl}\n')
-    datafile.write(f'Average Change: ${avg_pnl}\n')
-    datafile.write(f'Greatest Increase in Profits: {greatest_pnl_date} (${greatest_pnl_amount})\n')
-    datafile.write(f'Greatest Decrease in Profits: {lowest_pnl_date} (${lowest_pnl_amount})\n')
+    datafile.write(output)
